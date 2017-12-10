@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: selector-pod
+  labels:
+    app: selector-app
+spec:
+  containers:
+    - name: sel1
+      image: image1
+      command: ["/bin/sh"]
+      args: ["-c", "while true; do echo hello; sleep 10;done"]
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 6379
+    - name: sel2
+      image: image2
+      command: ["/bin/sh"]
+      args: ["-c", "while true; do echo hello; sleep 10;done"]
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 6380
